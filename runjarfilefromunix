@@ -1,0 +1,29 @@
+#!/bin/bash
+#executing jar from unix script 
+# -z zero lengh?
+# -n Non Zero lenght
+
+MYSELF=`which "$0" 2>/dev/null`
+
+: <<COMMENTBLOCK
+echo "This line will not echo."
+This is a comment line missing the "#" prefix.
+This is another comment line missing the "#" prefix.
+
+&*@!!++=
+The above line will cause no error message,
+because the Bash interpreter will ignore it.
+COMMENTBLOCK
+
+
+echo "Exit value of above \"COMMENTBLOCK\" is $?."   # 0
+# No error shown.
+
+[ $? -gt 0 -a -f "$0" ] && MYSELF="./$0"
+java=java
+if test -n "$JAVA_HOME"; then
+    java="$JAVA_HOME/bin/java"
+fi
+exec "$java" $java_args -jar $MYSELF "$@"
+exit 1 
+echo
