@@ -1,3 +1,4 @@
+-a file True if file exists.
 -b file True if file exists and is a block special file.
 -c file True if file exists and is a character special file.
 -d file True if file exists and is a directory.
