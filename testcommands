@@ -15,10 +15,12 @@
 -w file True if file exists and is writable.
 -x file True if file exists and is executable.
 -G file True if file exists and is owned by the effective group id.
--L file True if file exists and is a symbolic link.
+-n filename	Return true the length of string is nonzero.
 -N file True if file exists and has been modified since it was last read.
 -O file True if file exists and is owned by the effective user id.
 -S file True if file exists and is a socket.
+-z string	Return true the length of string is zero.
+-L filename	Return true filename exists and is a symbolic link.
 file1 -ef file2
 True if file1 and file2 refer to the same device and inode numbers.
 file1 -nt file2
