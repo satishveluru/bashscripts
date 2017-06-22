@@ -1,0 +1,63 @@
+How do we search /get all the files two direcoties using comma separator.
+
+for file in /{,usr/}bin/*calc
+# ^ Find all executable files ending in "calc"
+#+ in /bin and /usr/bin directories.
+do
+if [ -x "$file" ]
+then
+echo $file
+fi
+done
+
+# /bin/ipcalc
+# /usr/bin/kcalc
+# /usr/bin/oidcalc
+# /usr/bin/oocalc
+
+Example 2 : 
+let "t2 = ((a = 9, 15 / 3))"
+# Set "a = 9" and "t2 = 15 / 3"
+
+######################## what is NOP (no op do nothing )
+;
+echo $? # 0done
+
+############################## Place Holder ##############
+Placeholder in if/then test:
+if condition
+then : # Do nothing and branch ahead
+else # Or else ...
+take-some-action
+fi
+
+while :
+do
+operation-1
+operation-2
+...
+operation-n
+done
+# Same as:
+# while true
+# do
+# ...
+# done
+
+
+parameter substitution (as in Example 10-7).
+: ${HOSTNAME?} ${USER?} ${MAIL?}
+# Prints error message
+#+ if one or more of essential environmental variables not set.
+
+: > data.xxx # File "data.xxx" now empty.
+# Same effect as cat /dev/null >data.xxx
+# However, this does not fork a new process, since ":" is a builtin.
+
+####################################################### Function name #######################
+
+A colon can serve as a placeholder in an otherwise empty function.
+not_empty ()
+{
+:
+} # Contains a : (null command), and so is not empty.
