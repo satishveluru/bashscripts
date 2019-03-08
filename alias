@@ -1,0 +1,83 @@
+###########
+# Aliases
+###########
+
+
+#-------------------------------------------------------------
+# The 'ls' family (this assumes you use a recent GNU ls).
+#-------------------------------------------------------------
+# Add colors for filetype and  human-readable sizes by default on 'ls':
+alias lh='ls -h --color=auto'
+alias la="ls -lrtA" 
+alias ls="ls -lrt --color=auto"
+alias lx='ls -lXB'         #  Sort by extension.
+alias lk='ls -lSr'         #  Sort by size, biggest last.
+alias lt='ls -ltr'         #  Sort by date, most recent last.
+alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
+alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
+alias lsa="ls --color -l -A -hF --group-directories-first"
+
+# The ubiquitous 'll': directories first, with alphanumeric sorting:
+alias ll="ls -lv --group-directories-first"
+alias lm='ll |more'        #  Pipe through 'more'
+alias lr='ll -R'           #  Recursive ls.
+alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
+
+
+#### Directory Related 
+alias h="history | grep" #quick access to command history
+alias c="clear"
+alias grep="grep --color=auto -n" #colorize matches : shows line numbers
+alias mkdir="mkdir -pv" #-p flag to make any necessary parent directories ; -v every directory creation 
+alias fd="find . -name $1"
+alias fr="find . -type f -name $1 -exec rm -f {} \;"
+#alias fg="find . -type f -name $1 -exec grep -iH ' {} \;"
+
+#memory Related 
+alias df="df -h" # shows fre space using human readable units 
+alias du="du -sh" # shows disk usage using human readable units
+alias rd="rmdir"
+alias top="htop"
+
+## Functions 
+alias tarc="tar cvf /home/CAC_EAST/svelluru/$1 $2"
+
+### Git Related
+alias gs='git status'
+alias gd='git diff'
+alias gd='git branch'
+alias gl='git log --pretty=oneline --decorate -15'
+alias gco='git checkout'
+alias gsb='git show-branch'
+alias gdp='git difftool --tool=p4merge -y'
+alias gdm='git difftool --tool=meld --dir-diff -y'
+alias gdv='git difftool --tool=vd -y'
+alias gdlast='git diff HEAD~1 HEAD'
+alias glog='git log -5'
+
+
+
+#Tomcat servers
+
+
+#Variables
+
+export codebase='/cygdrive/c/codebase'
+export wldomain='C:/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain'
+
+
+#Deployments
+alias deploy-wtd="cp $codebase/-*.ear $wldomain/autodeploy/"
+alias deploy-caps="cp $codebase/.ear $wldomain/autodeploy/"
+alias undeploy="rm $wldomain/autodeploy/*.ear > /dev/null 2>&1"
+alias mcp="mvn clean package -Dmaven.test.skip"
+alias redeploy='(undeploy; sleep 3; wlstop; sleep 8; wlstart_background) & (cd /cygdrive/c/codebase/caps2; mvn clean package -Dmaven.test.skip; deploy-caps)' 
+alias wlstart_background="echo '' > /tmp/wldomain.log; $wldomain/startWebLogic.cmd > /tmp/wldomain.log 2>&1 &"
+alias wlstart="echo '' > /tmp/wldomain.log; $wldomain/startWebLogic.cmd"
+alias wlstop="$wldomain/bin/stopWebLogic.cmd"
+alias wlbouce="undeploy & (wlstop && wlstart)"
+
+
+
+
+
