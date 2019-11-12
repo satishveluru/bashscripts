@@ -94,6 +94,10 @@ alias tcshutdown="$tomcat8/bin/shutdown.sh"
 alias tcstart="$tomcat8/bin/startup.sh"
 alias tcredeploy="tcremoveandcopy & (tcshutdown && tcstart)"
 
+export JAVA7_HOME='C:\devtools\Java\JDK7'
+export JAVA8_HOME='C:\devtools\Java\JDK8'
+
+
 
 
 
