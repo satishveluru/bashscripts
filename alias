@@ -78,6 +78,23 @@ alias wlstop="$wldomain/bin/stopWebLogic.cmd"
 alias wlbouce="undeploy & (wlstop && wlstart)"
 
 
+#---------------------- Tomcat --------------------------
+# Local Tomcat instance Username and Passowrd : admin/admin 
+# Local Tomcat Deployment activities 
+#--------------------------------------------------------
+
+export tcconsole='http://localhost:8080/manager/html'
+export ciping='http://localhost:8080/contractInterface/'
+
+export ciwar="/cygdrive/c/codebase/contract-interface/target/ContractInterface*.war"
+alias cimove=" [ -f $ciwar ] && ( cp "$ciwar" "$tomcat8/webapps/contractInterface.war" )"
+alias tcremoveandcopy="( ( [ -f $tomcat8/webapps/contract*.war ] && rm $tomcat8/webapps/contract*.war > /dev/null  2>&1 ) ; cimove)";
+
+alias tcshutdown="$tomcat8/bin/shutdown.sh"
+alias tcstart="$tomcat8/bin/startup.sh"
+alias tcredeploy="tcremoveandcopy & (tcshutdown && tcstart)"
+
+
 
 
 
