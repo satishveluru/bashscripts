@@ -1,0 +1,21 @@
+# Source the system wide bashrc if it exists
+
+# if [ -e /etc/bash.bashrc ]; then
+	# source /etc/bash.bashrc
+# fi
+
+# # source the users bashrc if it exists
+
+# if [ -e "${HOME}/.bashrc" ]; then
+	# source "${HOME}/.bashrc"
+# fi
+
+
+if [ -e "${HOME}/.bashrc" ]; then
+	source "${HOME}/.bashrc"
+fi
+
+# Set PATH so it includes user's private bin if it exists
+ if [ -d "${HOME}/bin" ] ; then
+   PATH="${HOME}/bin:${PATH}"
+ fi
