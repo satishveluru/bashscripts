@@ -19,7 +19,7 @@ fi
 
 ### Proxy Setting
 export http_proxy=127.0.0.1:3128
-export https_proxy=127.0.0.1:3128
+export https_proxy=127.0.0.1:3128 
 export HTTP_PROXY=127.0.0.1:3128
 export HTTPS_PROXY=127.0.0.1:3128
 
